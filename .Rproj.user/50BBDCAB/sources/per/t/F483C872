@@ -1,0 +1,32 @@
+{
+    "id": "F483C872",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1645769461756.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "expression": "mundo",
+        "caption": "mundo",
+        "totalObservations": 177,
+        "displayedObservations": 177,
+        "variables": 12,
+        "cacheKey": "2800D0A6",
+        "object": "mundo",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=mundo&cache_key=2800D0A6&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1371410438096,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1645769461756,
+    "read_only": false,
+    "read_only_alternatives": []
+}

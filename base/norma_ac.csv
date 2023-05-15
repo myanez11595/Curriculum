@@ -1,0 +1,27 @@
+Parámetro,Unidad ,Límite_mínimo,Límite_máximo
+Aceites y grasas,mg/l,0,0.3
+Arsénico,mg/l,0,0.1
+Coliformes fecales,nmp/100ml,0,1000
+Bario,mg/l,0,1
+Cadmio,mg/l,0,0.02
+Cianuro,mg/l,0,0.1
+Cobre,mg/l,0,2
+Color real,u. pt-co,0,75
+Cromo hexavalente,mg/l,0,0.05
+Fluoruro,mg/l,0,1.5
+DQO,mg/l,0,4
+DBO5,mg/l,0,2
+Hierro,mg/l,0,1
+Mercurio,mg/l,0,0.006
+Nitratos,mg/l,0,50
+Nitritos,mg/l,0,0.2
+pH,unid pH,6,9
+Plomo,mg/l,0,0.01
+Selenio,mg/l,0,0.01
+Sulfatos,mg/l,0,500
+Hidrocarburos totales de petróleo,mg/l,0,0.2
+Turbiedad,unt,0,100
+Aluminio,mg/l,0,0.1
+Manganeso,mg/l,0,0.1
+Níquel,mg/l,0,0.025
+Oxígeno disuelto,mg/l,6,0

@@ -1,0 +1,486 @@
+---
+pdf_document: default
+word_document: default
+header-includes:
+ - \usepackage{multirow}
+ - \usepackage{pdflscape}
+ - \newcommand{\blandscape}{\begin{landscape}}
+ - \newcommand{\elandscape}{\end{landscape}}
+ - \usepackage{float}
+ - \usepackage{booktabs}
+ - \usepackage{colortbl}
+ - \usepackage{longtable}
+ - \usepackage{afterpage}
+ - \usepackage{geometry}
+ - \usepackage{fancyhdr}
+ - \pagestyle{fancy}
+ - \fancyhf{}
+ - \addtolength{\headheight}{1.0cm}
+ - "\\chead{\\includegraphics[width=9cm]{Ecu-celec.png}}"
+ - \lfoot{\includegraphics[width=9cm]{datos.png}} \rfoot{\includegraphics[width=4cm]{pie.png}}
+ - \fancypagestyle{plain}{\pagestyle{fancy}}
+ - \usepackage{setspace}
+ - \usepackage{placeins}
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+set.seed(1)
+periodicidad <- params$g_3
+recurso <- params$g_2
+central <- params$g_1
+```
+
+```{r,echo=FALSE, warning=FALSE, message=FALSE}
+periodicidad <- params$g_3
+recurso <- params$g_2
+central <- params$g_1
+año <- params$g_4
+```
+
+
+\begin{center}
+
+\fontsize{40pt}{46pt}\selectfont  
+
+\vspace{30 mm}
+
+\fontsize{40pt}{46pt}\selectfont Reporte `r periodicidad` del Recurso `r recurso`
+
+\vspace{15 mm}
+
+\fontsize{40pt}{46pt}\selectfont `r año`
+
+\vspace{15 mm}
+
+\fontsize{40pt}{46pt}\selectfont Central `r central` 
+
+\vspace{15 mm}
+
+\fontsize{40pt}{46pt}\selectfont CELEC SUR
+
+\vspace{15 mm}
+
+\fontsize{40pt}{46pt}\selectfont \today
+
+\end{center}
+
+\newpage
+
+\textbf{CONTENIDO}
+
+1.	INTRODUCCIÓN
+2.	OBJETIVOS Y ALCANCE	
+3.  MARCO LEGAL
+4.  ESTANDARES AMBIENTALES
+5.	METODOLOGIA DE MONITOREOS
+6.  UBICACIÓN ESPACIAL DE LOS PUNTOS MONITOREOS (mapas)
+7.	EVALUACIÓN DE MONITOREOS SEMESTRAL
+8. 	ANALISIS DE DATOS
+9. 	PLAN DE ACCION (formato de plan de acción)
+10. ANEXOS
+
+\newpage
+
+\textbf{1.	INTRODUCCIÓN}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+La Corporación Eléctrica del Ecuador CELEC EP, Unidad de Negocio CELEC SUR, central Molino (mazar, Sopladora, Minas San Francisco), cuenta con la Licencia Ambiental Resolución No.  004 – MAE–DPAA–LA–2015, del 18 de marzo de 2015 y está ubicado en la provincia del Azuay, cantón Sevilla de oro, parroquia Amaluza.
+Las actividades de la CELEC EP – CELEC SUR, podrían generar impactos ambientales en los medios físicos y bióticos de las áreas de Influencia, que deben ser monitoreados. 
+En ese contexto el presente informe resume los resultados del monitoreo de calidad del agua y suelo realizadas en el segundo tercero y cuarto trimestre cada año.
+También se incluyen gráficas de los resultados el monitoreo, así como su análisis y medida de acción frente a estos resultados.
+
+\end{spacing}
+
+\vspace{4 mm}
+
+\textbf{2.	OBJETIVOS Y ALCANCE}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+Evaluar los resultados del monitoreo de los parámetros de calidad de agua y suelo y compararlos con la normativa ambiental vigente para su análisis y medidas de acción.
+Estos monitoreos se realizaron en el área de influencia de los proyectos de CELEC SUR y en laboratorios acreditados en el Sistema de Acreditación del Ecuador (SAE). 
+
+\end{spacing}
+
+\vspace{4 mm}
+
+\textbf{3.	MARCO LEGAL}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+De acuerdo a la Normativa Ambiental el Código Orgánico del Ambiente:
+
+\textbf{CAPÍTULO IV: MONITOREO Y SEGUIMIENTO, Artículo 208.-} Obligatoriedad del monitoreo. El operador será el responsable del monitoreo de sus emisiones, descargas y vertidos, con la finalidad de que estas cumplan con el parámetro definido en la normativa ambiental. La Autoridad Ambiental Competente, efectuará el seguimiento respectivo y solicitará al operador el monitoreo de las descargas, emisiones y vertidos, o de la calidad de un recurso que pueda verse afectado por su actividad. Los costos del monitoreo serán asumidos por el operador. La normativa secundaria establecerá, según la actividad, el procedimiento y plazo para la entrega, revisión y aprobación de dicho monitoreo.
+
+El Reglamento del Código Orgánico del Ambiente: Art. 484. Monitoreos de aspectos ambientales. - El operador llevará reportes que contengan las observaciones visuales, los registros de recolección, los análisis y la evaluación de los resultados de los muestreos para medición de parámetros de la calidad y/o de alteraciones en los medios físico, biótico, socio–cultural, así como las acciones correctivas implementadas en el caso de identiﬁcarse incumplimientos de la normativa ambiental.
+Las fuentes, sumideros, recursos y parámetros a ser monitoreados, así como la frecuencia del monitoreo y la periodicidad de los reportes constarán en el respectivo plan de monitoreo del plan de manejo ambiental y serán determinados según la actividad, la magnitud de los impactos ambientales y características socio-ambientales del entorno.
+
+\textbf{CAPÍTULO X: CONTROL Y SEGUIMIENTO AMBIENTAL, DE LOS MONITOREOS, Art. 253 Del objeto.-} Dar seguimiento sistemático y permanente, continuo o periódico, mediante reportes cuyo contenido está establecido en la normativa y en el permiso  ambiental, que contiene las observaciones visuales, los registros de recolección, los análisis y la evaluación de los resultados de los muestreos para medición de parámetros de la calidad y/o de alteraciones en los medios físico, biótico, socio-cultural; permitiendo evaluar el desempeño de un proyecto, actividad u obra en el cumplimiento del Plan de Manejo Ambiental y de la normativa ambiental vigente. 
+Los monitoreos de los recursos naturales deberán evaluar la calidad ambiental por medio del análisis de indicadores cualitativos y cuantitativos del área de influencia de la actividad controlada y deberán ser contrastados con datos de resultados de línea base y con resultados de muestreos anteriores, de ser el caso.
+
+\end{spacing}
+
+\vspace{4 mm}
+
+\textbf{4.	ESTANDARES AMBIENTALES}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+Con respecto a los mecanismos o parámetros de comparación de resultados la normativa ambiental establece el siguiente cuadro para su análisis.
+
+\end{spacing}
+
+\vspace{4 mm}
+
+```{r Tabla3, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+
+if(params$g_2=="Agua de rio"){
+ s_a_p1=t_Agua_rio
+ s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+ s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[3] ="Límite mínimo"
+ colnames(s_a_p1)[4] ="Límite máximo"
+ Titulo="Criterios de calidad admisibles para la preservación de la vida acuática y silvestre en aguas dulces, marinas y de estuarios"
+}else if(params$g_2=="Agua potable"){
+s_a_p1=t_Agua_potable
+s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[3] ="Límite mínimo"
+ colnames(s_a_p1)[4] ="Límite máximo"
+ Titulo="Inen 1108: Agua potable: requisitos"
+}else if(params$g_2=="Agua residual"){
+s_a_p1=t_Agua_residual
+s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[3] ="Límite mínimo"
+ colnames(s_a_p1)[4] ="Límite máximo"
+ Titulo="Límites de descarga a un cuerpo de agua dulce"
+}else if(params$g_2=="Agua cruda"){
+s_a_p1=t_Agua_cruda
+s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[3] ="Límite mínimo"
+ colnames(s_a_p1)[4] ="Límite máximo"
+ Titulo="Criterios de calidad de fuentes de agua para consumo humano y doméstico"
+}else if(params$g_2=="Lixiviados"){
+s_a_p1=t_Lixiviados
+s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+s_a_p1$Norma_tabla=gsub("_"," ",s_a_p1$Norma_tabla)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[1] ="Norma tabla"
+ colnames(s_a_p1)[4] ="Límite mínimo"
+ colnames(s_a_p1)[5] ="Límite máximo"
+ Titulo="Límites de descarga al sistema de alcantarillado público"
+}else if(params$g_2=="Suelo "){
+s_a_p1=t_Suelohist
+s_a_p1$Límite_mínimo=as.character(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.character(s_a_p1$Límite_máximo)
+ s_a_p1$Parámetro=gsub("_"," ",s_a_p1$Parámetro)
+ s_a_p1$Unidad =gsub("_"," ",s_a_p1$Unidad)
+ colnames(s_a_p1)[3] ="Límite mínimo"
+ colnames(s_a_p1)[4] ="Límite máximo"
+ Titulo="Criterios de remediación (valores máximos permisibles)"
+}
+
+#kable(s_a_p1,"latex") %>% 
+#kable_styling(latex_options="scale_down") #%>% 
+kbl(s_a_p1, "latex", booktabs=T, longtable = TRUE,caption = Titulo, align = "c") %>%
+  kable_paper() %>% 
+  column_spec(1, width = "9em") %>% 
+  column_spec(2, width = "5em") %>% 
+  column_spec(3, width = "5em") %>% 
+  column_spec(4, width = "5em") %>% 
+  column_spec(5, width = "5em") %>% 
+  kable_styling(latex_options = c("HOLD_position","repeat_header"))
+#row_spec(color.me, bold = T, color = "white", background = "red")  
+
+
+```
+
+\vspace{4 mm}
+
+\textbf{5.	METODOLOGIA DE MONITOREOS}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+El monitoreo se realizó a través de toma de muestras simple y el análisis de las muestras por el método analítico y de control de calidad de los ensayos, cumpliendo con los requisitos establecidos en la norma ISO 17025.
+
+\end{spacing}
+
+\vspace{4 mm}
+
+\newpage
+
+\newgeometry{top=0.5cm,left=0.5cm,bottom=0.5cm,right=0.5cm}
+
+\blandscape
+
+\textbf{6.	UBICACIÓN ESPACIAL DE LOS PUNTOS DE MONITOREO }
+
+```{r Mapa, fig.height=4, echo=FALSE,  warning=FALSE, message=FALSE}
+library(leaflet)
+s_si1<-base %>% dplyr::filter(grepl(params$g_1, base$Central)&grepl(params$g_2, base$Recurso)&grepl(params$g_3, base$Frecuencia)&grepl(params$g_4, base$Fecha))
+#s_si1<-base %>% dplyr::filter(grepl("Mazar", base$Central)&grepl("Agua cruda", base$Recurso)&grepl("Anual", base$Frecuencia)&grepl("2018", base$Fecha)&grepl("Campamento_captación_arenales", base$Punto_de_.medición))
+
+mydata=s_si1
+pal <- colorFactor(topo.colors(8), domain=c(mydata$Punto_de_medición%>%unique()))
+proj4string="+proj=utm +zone=17 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+xy=data.frame(x=s_si1$X_coord,y=s_si1$Y_coord)
+pj=project(data.frame(x=s_si1$X_coord,y=s_si1$Y_coord),proj4string,inverse = T)
+mydata$Lat=pj$y
+mydata$Long=pj$x
+s_a_p1 = mydata
+content= paste("<p>","<b>","ESTE:","</b>","",s_a_p1$X_coord,"  ","<b>","NORTE:","</b>","",s_a_p1$Y_coord,"</p>")
+m=   leaflet() %>% addProviderTiles(providers$Esri.WorldImagery,group = "Satelite") %>% 
+  addCircleMarkers(data=s_a_p1, lat = ~s_a_p1$Lat, lng=s_a_p1$Long, color=~pal(Punto_de_medición), fillOpacity=0.5, label = lapply(content, HTML), group = "Puntod") %>%
+  addLegend(data=mydata,"bottomright", pal=pal, values=mydata$Punto_de_medición, title = "Leyenda", opacity=0.5,group = "Leyenda")%>% 
+  addGraticule()%>%
+  addScaleBar()
+saveWidget(m, "temp.html", selfcontained = FALSE)
+
+webshot("temp.html", file = "Rplot.png",
+        cliprect = "viewport")
+
+```
+
+\elandscape
+
+\restoregeometry
+
+\vspace{4 mm}
+
+\textbf{7.	EVALUACIÓN DE MONITOREOS (TABLA Y GRÁFICO)}
+
+\noindent\rule{\textwidth}{1pt}
+
+\vspace{4 mm}
+
+\textbf{7.1	Evaluación de cumplimento de parámetros:}
+
+\begin{spacing}{1.5}
+
+\FloatBarrier
+
+En base al cumplimiento de la legislación ambiental, los parámetros que deben ser evaluados del recurso agua y suelo, están sujetos a la Norma para la prevención y Control de la Contaminación Ambiental del Recurso agua en Centrales Hidroeléctricas y la Norma para la prevención y control de la contaminación ambiental del recurso suelo en centrales de generación de energía eléctrica del Libro VI del Texto Unificado de Legislación Secundaria del Ministerio del Ambiente (TULSMA).
+Dentro de este orden se presenta los gráficos de los resultados de los parámetros medidos en cada punto de muestreo y su respectivo cumplimento con el límite máximo permisible establecidos en la respectiva norma.
+
+\end{spacing}
+
+\newgeometry{top=0.5cm,left=0.5cm,bottom=0.5cm,right=0.5cm}
+
+\newpage
+
+\blandscape
+  
+```{r Tabla, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+if(params$g_3=="Anual"|params$g_3=="Anual "){
+  s_si1<-base %>% dplyr::filter(grepl(params$g_1, base$Central)&grepl(params$g_2, base$Recurso)&grepl(params$g_4, base$Fecha))
+} else{
+  s_si1<-base %>% dplyr::filter(grepl(params$g_1, base$Central)&grepl(params$g_2, base$Recurso)&grepl(params$g_3, base$Frecuencia)&grepl(params$g_4, base$Fecha))
+}
+s_a_p1 = s_si1
+s_a_p1$Medición=as.numeric(s_a_p1$Medición)
+s_a_p1$Límite_mínimo=as.numeric(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.numeric(s_a_p1$Límite_máximo)
+s_a_p1=mutate(s_a_p1,Cumplimiento = if_else(s_a_p1$Medición > s_a_p1$Límite_mínimo & s_a_p1$Medición<=s_a_p1$Límite_máximo,"C","NC"))
+s_a_p1$Cumplimiento[is.na(s_a_p1$Cumplimiento)]=0
+s_a_p1 <- data.frame(lapply(s_a_p1, function(x) {gsub("_", " ", x)}))
+  s_a_p1 <-s_a_p1[order(s_a_p1$Punto_de_medición),]
+rownames(s_a_p1) <- 1:nrow(s_a_p1)
+colnames(s_a_p1) <- c("Central", "Recurso","Punto de medición","X coord","Y coord","Frecuencia" , "Norma tabla" , "Parámetro" , "Unidad", "Límite mínimo","Límite máximo","Fecha","Medición", "Observación", "Cumplimiento")   
+#kable(s_a_p1,"latex") %>% 
+#kable_styling(latex_options="scale_down") #%>% 
+kbl(s_a_p1, "latex", booktabs=T, longtable = TRUE, caption = "Comparación de Parámetros Medidos vs Normativa Ambiental", align = "c") %>%
+  kable_paper() %>%
+  column_spec(1, width = "3em") %>% 
+  column_spec(2, width = "3em") %>% 
+  column_spec(3, width = "5em") %>% 
+  column_spec(4, width = "3em") %>% 
+  column_spec(5, width = "3em") %>% 
+  column_spec(6, width = "4em") %>% 
+  column_spec(7, width = "5em") %>% 
+  column_spec(8, width = "5em") %>% 
+  column_spec(9, width = "4em") %>% 
+  column_spec(10, width = "3em") %>% 
+  column_spec(11, width = "3em") %>% 
+  column_spec(12, width = "5em") %>% 
+  column_spec(13, width = "3em") %>% 
+  column_spec(14, width = "4em") %>% 
+  column_spec(14, width = "4em") %>% 
+  kable_paper(full_width = F) %>% 
+  row_spec(which(s_a_p1$Cumplimiento == "NC"), bold = T, color = "white", background = "#FFA54A") %>% 
+  kable_styling(latex_options = c("HOLD_position","repeat_header"))
+#row_spec(color.me, bold = T, color = "white", background = "red")  
+
+
+```
+
+\elandscape
+
+\restoregeometry
+
+\vspace{4 mm}
+
+\newpage
+
+\textbf{7.2 Gráficos de parámetros:}
+
+```{r plot, fig.height=6, echo=FALSE, warning=FALSE, message=FALSE}
+s_si1<-base %>% dplyr::filter(grepl(params$g_1, base$Central)&grepl(params$g_2, base$Recurso)&grepl(params$g_3, base$Frecuencia)&grepl(params$g_4, base$Fecha))
+
+punt_g=unique(s_si1$Punto_de_medición)
+long = length(punt_g)
+while (long>0) {
+  s_s1 = s_si1 %>% dplyr::filter(grepl(punt_g[long], s_si1$Punto_de_medición))
+  long=long-1
+  titulo=paste("Punto",s_s1$Punto_de_medición)
+  s_s1$parametro_unidad=str_c(s_s1$Parámetro," ",s_s1$Unidad)
+  s_s1$id=1:nrow(s_s1)
+  d_s=data.frame(s_s1$parametro_unidad,
+                 s_s1$Medición) 
+  colnames(d_s)[1]="parametro_unidad"
+  g_s=ggplot(d_s,aes(x=parametro_unidad,y = s_s1$Medición,tooltip = paste("Medición:",s_s1$Medición), data_id = s_s1$Medición)) +
+    geom_hline_interactive(aes(yintercept = s_s1$Límite_máximo, linetype = "Límite máximo",tooltip =paste("L. máximo:",s_s1$Límite_máximo), data_id = s_s1$Límite_máximo), colour = "Red", size=1)+
+    geom_hline_interactive(aes(yintercept = s_s1$Límite_mínimo, linetype = "Límite mínimo",tooltip =paste("L. mínimo:",s_s1$Límite_mínimo), data_id = s_s1$id), colour = "Green", size=1) + 
+    guides(linetype=guide_legend(override.aes=list(colour = c("red","green"))))+ 
+    geom_col_interactive(size = 0.5, width = 0.5,stat = "identity",fill="#0073C2FF")+
+    facet_wrap(~d_s$parametro_unidad, scales = "free", labeller = label_wrap_gen(8))+
+    scale_linetype_manual(name = "Límites", values = c("Límite máximo" = 1, "Límite mínimo" = 1),guide = "legend")+
+    guides(fill = guide_legend(ncol=2))
+  g_s <- g_s + theme(legend.text=element_text(size=7),legend.title=element_text(face="bold",size=7),axis.title.x = element_text(size=7),axis.title.y = element_text(size=9,angle=90),plot.title = element_text(size=9,face="bold"),axis.text.x=element_blank()) 
+  g_s<- g_s + labs(title = titulo) + ylab("Resultado") + xlab("Parámetro medido")
+  print(g_s)
+  
+}
+```
+
+\textbf{8.	ANALISIS DE DATOS}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{spacing}{1.5}
+
+De la evaluación y comparación de los resultados de monitoreo, se presenta un cuadro resumen de los parámetros que sobre pasan el límite máximo permisible establecido en la normativa, razón por la que se recomienda ejecutar y tomar medidas correctivas para para su conformidad.
+
+\end{spacing}
+
+\textbf{8.1 Parámetros que no cumplen con la normativa  }
+
+\begin{spacing}{1.5}
+
+De la evaluación y comparación de los resultados de monitoreo, se presenta un cuadro resumen de los parámetros que sobre pasan el límite máximo permisible establecido en la normativa, razón por la que se recomienda ejecutar y tomar medidas correctivas para para su conformidad.
+
+\end{spacing}
+
+\newgeometry{top=0.5cm,left=0.5cm,bottom=0.5cm,right=0.5cm}
+
+\newpage
+
+\blandscape
+  
+```{r Tabla2, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+
+s_si1<-base %>% dplyr::filter(grepl(params$g_1, base$Central)&grepl(params$g_2, base$Recurso)&grepl(params$g_3, base$Frecuencia)&grepl(params$g_4, base$Fecha))
+if(nrow(s_si1>0)){
+  s_a_p1 = s_si1
+s_a_p1$Medición=as.numeric(s_a_p1$Medición)
+s_a_p1$Límite_mínimo=as.numeric(s_a_p1$Límite_mínimo)
+s_a_p1$Límite_máximo=as.numeric(s_a_p1$Límite_máximo)
+s_a_p1=mutate(s_a_p1,Cumplimiento = if_else(s_a_p1$Medición > s_a_p1$Límite_mínimo & s_a_p1$Medición<=s_a_p1$Límite_máximo,"C","NC"))
+s_a_p1$Cumplimiento[is.na(s_a_p1$Cumplimiento)]=0
+s_a_p1 <- data.frame(lapply(s_a_p1, function(x) {gsub("_", " ", x)}))
+s_a_p1=s_a_p1[s_a_p1$Cumplimiento=="NC",]
+s_a_p1 <-s_a_p1[order(s_a_p1$Punto_de_medición),]
+if(nrow(s_a_p1)>0){
+  rownames(s_a_p1) <- 1:nrow(s_a_p1)
+}else{}
+
+colnames(s_a_p1) <- c("Central", "Recurso","Punto de medición","X coord","Y coord","Frecuencia" , "Norma tabla" , "Parámetro" , "Unidad", "Límite mínimo","Límite máximo","Fecha","Medición", "Observación", "Cumplimiento")   
+#kable(s_a_p1,"latex") %>% 
+#kable_styling(latex_options="scale_down") #%>% 
+kbl(s_a_p1, "latex", booktabs=T, longtable = TRUE, caption = "Parámetros fuera de norma", align = "c") %>%
+  kable_paper() %>%
+  column_spec(1, width = "3em") %>% 
+  column_spec(2, width = "3em") %>% 
+  column_spec(3, width = "5em") %>% 
+  column_spec(4, width = "3em") %>% 
+  column_spec(5, width = "3em") %>% 
+  column_spec(6, width = "4em") %>% 
+  column_spec(7, width = "5em") %>% 
+  column_spec(8, width = "5em") %>% 
+  column_spec(9, width = "4em") %>% 
+  column_spec(10, width = "3em") %>% 
+  column_spec(11, width = "3em") %>% 
+  column_spec(12, width = "5em") %>% 
+  column_spec(13, width = "3em") %>% 
+  column_spec(14, width = "4em") %>% 
+  column_spec(14, width = "4em") %>% 
+
+  kable_styling(latex_options = c("HOLD_position","repeat_header"))
+} else {
+  
+}
+
+
+```
+
+\elandscape
+
+\newpage
+
+\newgeometry{top=0.5cm,left=0.5cm,bottom=0.5cm,right=0.5cm}
+
+\blandscape
+
+\textbf{9.	PLAN DE ACCIÓN }
+
+
+\begin{table}[H]
+\begin{tabular}{|l|l|lll|l|l|ll|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{No}}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}REFERENCIA \\ DE \\ HALLAZGO\end{tabular}}}} & \multicolumn{3}{c|}{\textbf{CLASIFICACIÓN}}                                                               & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}DESCRIPCIÓN DE LAS \\ ACTIVIDADES DEL PLAN DE \\ ACCIÓN/MEDIDA CORRECTIVA\end{tabular}}}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}MEDIO DE \\ VERIFICACIÓN\end{tabular}}}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}PLAZO DE \\ EJECUCIÓN\end{tabular}}}                                                                                      & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{Responsable}}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{Costo}}} \\ \cline{3-5} \cline{8-9}
+\multicolumn{1}{|c|}{}                             & \multicolumn{1}{c|}{}                                                                                               & \multicolumn{1}{c|}{\textbf{NC+}} & \multicolumn{1}{c|}{\textbf{NC-}} & \multicolumn{1}{c|}{\textbf{Obs}} & \multicolumn{1}{c|}{}                                                                                                                                            & \multicolumn{1}{c|}{}                                                                                           & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Fecha de \\ inicio\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Fecha de \\ fín\end{tabular}}} & \multicolumn{1}{c|}{}                                      & \multicolumn{1}{c|}{}                                \\ \hline
+                                                   &                                                                                                                     & \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}             &                                   &                                                                                                                                                                  &                                                                                                                 & \multicolumn{1}{l|}{}                                                                    &                                                                                       &                                                            &                                                      \\ \hline
+                                                   &                                                                                                                     & \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}             &                                   &                                                                                                                                                                  &                                                                                                                 & \multicolumn{1}{l|}{}                                                                    &                                                                                       &                                                            &                                                      \\ \hline
+
+\end{tabular}
+\end{table}
+\elandscape
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+Parámetro,Unidad ,Límite_mínimo,Límite_máximo
+Aceites y grasas,mg/l,0,0.3
+Aluminio,mg/l,0,0.1
+Amoniaco total,mg/l,0,0
+Arsénico,mg/l,0,0.05
+Coliformes fecales,nmp/100ml,0,1000
+Bario,mg/l,0,1
+Berilio,mg/l,0,0.1
+Bifenilos policlorados,ug/l,0,1
+Boro,mg/l,0,0.75
+Cadmio,mg/l,0,0.001
+Cianuro,mg/l,0,0.01
+Cobre,mg/l,0,0.005
+Color real,u. pt-co,0,75
+Cromo hexavalente,mg/l,0,0.05
+Clorofenoles,mg/l,0,0.05
+Cobalto,mg/l,0,0.2
+Cromo total,mg/l,0,0.032
+Estaño,mg/l,0,0
+Fenoles monohídricos,mg/l,0,0.001
+Hidrocarburos totales de petróleo,mg/l,0,0.2
+Materia flotante de orígen antrópico,,0,Ausencia
+Mercurio,mg/l,0,0.0002
+Piretroides,mg/l,0,0.05
+Plaguicidas organoclorados totales,ug/L,0,10
+Plaguicidas organofosforados totales,ug/L,0,10
+Plata,mg/l,0,0.01
+Plomo,mg/l,0,0.01
+pH,unid ph,6.5,9
+Selenio,mg/l,0,0.001
+Tensoactivos,mg/l,0,0.5
+Fluoruro,mg/l,0,1.5
+DQO,mg/l,0,40
+DBO5,mg/l,0,20
+Hierro,mg/l,0,0.3
+Nitratos,mg/l,0,13
+Nitritos,mg/l,0,0.2
+Sólidos suspendidos totales ,mg/l,0,0
+Turbiedad,unt,0,100
+Oxígeno disuelto ,mg/l,6,0
+Cloro residual,mg/l,0,0.01
+Manganeso,mg/l,0,0.1
+Níquel,mg/l,0,0.025
+Zinc,mg/l,0,0.03

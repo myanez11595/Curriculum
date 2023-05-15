@@ -1,0 +1,63 @@
+Parámetro,Unidad ,Límite_mínimo,Límite_máximo
+Conductividad ,uS/cm,0,400
+pH,unid pH,6,8
+Relación de adsorción de sodio (Indice SAR),,0,12
+Arsénico,mg/kg,0,12
+Sulfuro,mg/kg,0,0
+Bario,mg/kg,0,2000
+Boro(soluble en agua caliente),mg/kg,0,0
+Cadmio,mg/kg,0,10
+Cobalto,mg/kg,0,300
+Cobre,mg/kg,0,91
+Cromo total,mg/kg,0,87
+Cromo hexavalente,mg/kg,0,1.4
+Cianuro,mg/kg,0,8
+Estaño,mg/kg,0,300
+Fluoruros,mg/kg,0,2000
+Mercurio,mg/kg,0,10
+Molibdeno,mg/kg,0,40
+Níquel,mg/kg,0,50
+Plomo,mg/kg,0,150
+Selenio,mg/kg,0,10
+Talio,mg/kg,0,1
+Vanadio,mg/kg,0,130
+Zinc,mg/kg,0,360
+Aceites y grasas,mg/kg,0,4000
+Benceno,mg/kg,0,5
+Etilbenceno,mg/kg,0,20
+Estireno,mg/kg,0,50
+Tolueno,mg/kg,0,0.8
+Xileno,mg/kg,0,20
+Bifenilos policlorados pcbs,mg/kg,0,33
+Clorofenoles cada tipo,mg/kg,0,5
+Fenoles total,mg/kg,0,5
+Clorinados alifáticos cada tipo,mg/kg,0,50
+Hidrocarburos totales de petróleo,mg/kg,0,620
+Hidrocarburos_aromáticos_policiclicos,mg/kg,0,5
+Clorobenceno,mg/kg,0,10
+Tetracloroetilenos,mg/kg,0,0.6
+Tricloroetileno,mg/kg,0,30
+Atrazina,mg/kg,0,0.005
+Carbofuran,mg/kg,0,0.01
+Compuestos orgánicos volátiles en peso húmedo,mg/kg,0,0
+Alifáticos no clorinados cada tipo,mg/kg,0,0
+Antraceno,mg/kg,0,100
+Benzo(a)antraceno,mg/kg,0,10
+Benzo(a)pireno,mg/kg,0,0.7
+Benzo(b)fluoranteno,mg/kg,0,10
+Benzo(k)fluoranteno,mg/kg,0,10
+"Dibenzo(a,h)antraceno",mg/kg,0,10
+"Indeno(1,2,3-cd)pireno",mg/kg,0,10
+Fluoranteno,mg/kg,0,100
+Naftaleno,mg/kg,0,22
+Pireno,mg/kg,0,100
+Criseno,mg/kg,0,100
+Fenantreno,mg/kg,0,50
+Alfa BCH,mg/kg,0,0.01
+Beta BCH,mg/kg,0,0.01
+Gamma BCH,mg/kg,0,0.01
+Delta BCH,mg/kg,0,0.01
+Heptacloro,mg/kg,0,0.01
+Aldrin,mg/kg,0,0.1
+Heptacloro epoxico isomero B,mg/kg,0,1
+Endosulfan I,mg/kg,0,0.1

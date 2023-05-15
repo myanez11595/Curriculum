@@ -1,0 +1,17 @@
+install.packages('tmap')
+library(sf)
+library(raster)
+library(dplyr)
+library(spData)
+library(tmap)
+mundo=world
+Ecuador=mundo[mundo$name_long==mundo$name_long[c('Ukraine','Turkey','Austria','Ecuador','United Kingdom','Canada',
+                                                'United States','Denmark','Germany','France','Czech Republic','Bulgaria'
+                                                ,'Albania','Italy','Spain','Poland','Belgium','Greece','Finland'
+                                                ,'Norway','Sweden','Slovakia','Hungary','Slovenia','Romania','Serbia','Latvia')],]
+world <- st_read(system.file("shapes/world.gpkg", package="spData"))
+plot(world)
+tm_shape(world)+
+  tm_polygons()
+st_write(mundo,'mundo.shp')
+typeof(world)

@@ -1,0 +1,157 @@
+library(dplyr)
+library(ggplot2)
+library(shiny)
+library(DT)
+library(ggrepel)
+library(tidyr)
+library(shinycssloaders)
+library(shinythemes)
+library(XML)
+library(rvest)
+library(httr)
+library(SwimmeR)
+library(png)
+library(leaflet)
+library(shinyWidgets)
+library(proj4)
+library(tidyverse)
+library(tseries)
+library(leaflet.extras)
+
+#https://spatialreference.org/ref/epsg/32717/proj4js/
+#rlang::last_error()
+#Import Data
+#Agua_cruda <- read.csv("Agua_cruda")
+#Agua_residual  <- read.csv("Agua_residual")
+#Agua_potable <- read.csv("Agua_potable")
+#Suelo <- read.csv("Suelo")
+
+Coordenadas <- read.csv("Puntos de monitoreo.csv")
+#Lixiviados <- read.csv("Lixiviados")
+# Define UI for application that draws a histogram
+
+mydata=Coordenadas
+proj4string="+proj=utm +zone=17 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+xy=data.frame(x=Coordenadas$Este,y=Coordenadas$Norte)
+pj=project(data.frame(x=Coordenadas$Este,y=Coordenadas$Norte),proj4string,inverse = T)
+mydata$Lat=pj$y
+mydata$Long=pj$x
+head(mydata)
+Grupos <- mydata %>% split(mydata$Tipo)
+
+pal <- colorFactor(c("orange", "red","green"), domain=c(mydata$Tipo%>%unique()))
+
+ui <- fluidPage(theme = shinytheme("cerulean"),
+                
+                
+                titlePanel("Reportes periódicos para el cumplimiento normativo de variables Agua y Suelo"),
+                navbarPage("Let's get started",
+                           
+                           tabPanel(icon("home"), 
+                                    fluidRow(column(
+                                      br(),
+                                      
+                                      p("A partir de datos producto de monitoreos periódicos de los recursos agua y suelo 
+                                     por parte de la empresa CELEC SUR, y bajo el cumplimento de la normativa ambiental 
+                                     vigente, se busca estructurar una interfaz que permita generar reportes automáticos 
+                                     de las mediciones de los parámetros del índice de la calidad del agua y calidad del 
+                                     suelo, en las que se podrá conocer el comportamiento de los parámetros en distintos 
+                                     puntos de muestreo; y si cumplen con los límites máximos permisibles requeridos por 
+                                     la normativa. Con esto se espera poder facilitar un sistema interactivo que facilite 
+                                     la visualización de los datos de monitoreo de agua y suelo.",style="text-align:justify;color:black;background-color:lavender;padding:15px;border-radius:10px"),
+                                      width=8),
+                                      column(
+                                        br(),
+                                        img(src="UDA.png",width="200px",height="130px"),
+                                        br(),
+                                        br(),
+                                        p(em("Universidad orientada hacia la investigación; acreditada con estándares nacionales e internacionales; 
+                 y, constituirse en un referente académico nacional"),
+                                          br(),
+                                          a(href="https://www.uazuay.edu.ec/", "Here",target="_blank"),style="text-align:center;color:black"),
+                                        
+                                        width=2)),
+                                    
+                                    
+                                    hr(),
+                                    tags$style(".fa-database {color:#E87722}"),
+                                    h3(p(em("Database "),icon("database",lib = "font-awesome"),style="color:black;text-align:center")),
+                                    fluidRow(column(DT::dataTableOutput("RawData"),
+                                                    width = 12)),
+                                    
+                                    hr(),
+                                    p(em("Developed by"),br("Jenny Wuambanguito & Nancy Muñoz"),style="text-align:center; font-family: times")
+                           ),
+                           tabPanel(
+                             "Mapa de Puntos",
+                             titlePanel(p("Geovisor", style = "color:#3474A7")),
+                             fluidRow(
+                               sidebarPanel(
+                                 p("Made with", a("Shiny",
+                                                  href = "http://shiny.rstudio.com"
+                                 ), "."),
+                                 img(
+                                   src = "mundo.png",
+                                   width = "70px", height = "70px"
+                                 )
+                               ),
+                               mainPanel("main panel for outputs")
+                             ),
+                             fluidRow(
+                               column(width = 1,
+                                      #pickerInput("prov", "Seleccionar provincia", filtro1, choices=filtro1 , options = list(`actions-box` = TRUE),multiple = T)
+                               ),
+                               
+                               mainPanel(leafletOutput("mapa", height = 800)))
+                             
+                           ),
+                           tabPanel(
+                             "Agua Cruda",
+                           ),
+                           tabPanel(
+                             "Agua Residual",
+                             
+                           ),
+                           tabPanel(
+                             "Agua Potable",
+                             
+                           ),
+                           tabPanel(
+                             "Lixiviados",
+                             
+                           ),
+                           tabPanel(
+                             "Suelo",
+                             
+                           )
+                ))
+
+
+server<-function(input, output){
+  
+  output$mapa <- renderLeaflet({
+    
+    leaflet() %>% addProviderTiles(providers$Esri.WorldImagery)%>%
+      addCircles(data=Grupos$Agua, lat = ~Grupos$Agua$Lat, lng=Grupos$Agua$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Tipo, group = "A" ) %>%
+      addCircles(data=Grupos$Suelo, lat = ~Grupos$Suelo$Lat, lng=Grupos$Suelo$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Tipo, group = "S" )%>%
+      addCircles(data=Grupos$Domestica, lat = ~Grupos$Domestica$Lat, lng=Grupos$Domestica$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Tipo, group = "D" )%>% 
+      addLegend(data=mydata,"bottomright", pal=pal, values=mydata$Tipo, title = "Leyenda", opacity=0.5,group = "Leyenda")%>% 
+      addLayersControl( overlayGroups = c("A","S","D","Leyenda"), options=layersControlOptions(collapsed = F,labels="Layers",title = "Layers",color="blue"))%>%
+      addGraticule(interval = 20,
+                   sphere = FALSE,
+                   style = list(color = "#333", weight = 1),
+                   layerId = NULL,
+                   group = NULL,
+                   options = pathOptions(pointerEvents = "none", clickable = FALSE))%>%
+      addScaleBar()%>% 
+      addMeasurePathToolbar(options = measurePathOptions(imperial = T,
+                                                         minPixelDistance = 100,
+                                                         showDistances = F))%>%
+      addDrawToolbar(editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))
+    
+  } 
+  
+  )
+  
+}
+shinyApp(ui = ui, server = server)

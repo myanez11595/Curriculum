@@ -1,0 +1,14 @@
+name: Marlon_Yanez_DashReport
+title: Marlon_Yanez_DashReport
+username:
+account: z58l17-marlon-y0nez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7739266
+bundleId: 6558768
+url: https://z58l17-marlon-y0nez.shinyapps.io/Marlon_Yanez_DashReport/
+when: 1669533065.38292
+lastSyncTime: 1669533065.38292
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|data/assessed_profs.rdata|base

@@ -1,0 +1,223 @@
+library(dplyr)
+library(ggplot2)
+library(shiny)
+library(DT)
+library(ggrepel)
+library(tidyr)
+library(shinycssloaders)
+library(shinythemes)
+library(XML)
+library(rvest)
+library(httr)
+library(SwimmeR)
+library(png)
+library(leaflet)
+library(shinyWidgets)
+library(proj4)
+library(tidyverse)
+library(tseries)
+library(leaflet.extras)
+library(plotly)
+
+#https://spatialreference.org/ref/epsg/32717/proj4js/
+#rlang::last_error()
+#Import Data
+#Agua_cruda <- read.csv("Agua_cruda")
+#Agua_residual  <- read.csv("Agua_residual")
+#Agua_potable <- read.csv("Agua_potable")
+Suelohist <-read.csv("db102_suelos.csv")
+Suelo <- read.csv("Suelo.csv")
+Coordenadas <- read.csv("Puntos de monitoreo.csv")
+#Lixiviados <- read.csv("Lixiviados")
+# Define UI for application that draws a histogram
+mydata=Coordenadas
+proj4string="+proj=utm +zone=17 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+xy=data.frame(x=Coordenadas$Este,y=Coordenadas$Norte)
+pj=project(data.frame(x=Coordenadas$Este,y=Coordenadas$Norte),proj4string,inverse = T)
+mydata$Lat=pj$y
+mydata$Long=pj$x
+head(mydata)
+Grupos <- mydata %>% split(mydata$Tipo)
+
+pal <- colorFactor(c("orange", "red","green"), domain=c(mydata$Tipo%>%unique()))
+
+ui <- fluidPage(theme = shinytheme("cerulean"),
+    
+
+                    titlePanel("Reportes periódicos para el cumplimiento normativo de variables Agua y Suelo"),
+    navbarPage("Let's get started",
+        
+        tabPanel(icon("home"), 
+                 fluidRow(column(
+        br(),
+        
+        p("A partir de datos producto de monitoreos periódicos de los recursos agua y suelo 
+                                     por parte de la empresa CELEC SUR, y bajo el cumplimento de la normativa ambiental 
+                                     vigente, se busca estructurar una interfaz que permita generar reportes automáticos 
+                                     de las mediciones de los parámetros del índice de la calidad del agua y calidad del 
+                                     suelo, en las que se podrá conocer el comportamiento de los parámetros en distintos 
+                                     puntos de muestreo; y si cumplen con los límites máximos permisibles requeridos por 
+                                     la normativa. Con esto se espera poder facilitar un sistema interactivo que facilite 
+                                     la visualización de los datos de monitoreo de agua y suelo.",style="text-align:justify;color:black;background-color:lavender;padding:15px;border-radius:10px"),
+        width=8),
+        column(
+          br(),
+          img(src="UDA.png",width="200px",height="130px"),
+          br(),
+          br(),
+          p(em("Universidad orientada hacia la investigación; acreditada con estándares nacionales e internacionales; 
+                 y, constituirse en un referente académico nacional"),
+            br(),
+            a(href="https://www.uazuay.edu.ec/", "Here",target="_blank"),style="text-align:center;color:black"),
+          
+          width=2)),
+        
+            
+        hr(),
+        tags$style(".fa-database {color:#E87722}"),
+        h3(p(em("Database "),icon("database",lib = "font-awesome"),style="color:black;text-align:center")),
+        fluidRow(column(DT::dataTableOutput("RawData"),
+                        width = 12)),
+        
+        hr(),
+        p(em("Developed by"),br("Jenny Wuambanguito & Nancy Muñoz"),style="text-align:center; font-family: times")
+        ),
+        tabPanel(
+            "Mapa de Puntos",
+            titlePanel(p("Geovisor", style = "color:#3474A7")),
+            fluidRow(column(
+                              p("Las fuentes utilizadas para analizar el área y evaluar las variables  seleccionadas, han sido trabajos realizados por CELEC EP. Según estos estudios, la central Hidroeléctrica Paute Molino está ubicada en el límite de las provincias del Cañar, Chimborazo, Azuay y Morona Santiago, a 125 Km de la ciudad de Cuenca, la capital azuaya y a 50 Km de Santiago de Méndez, perteneciente a la provincia de Morona Santiago",style="text-align:justify;color:black;background-color:lavender;padding:15px;border-radius:10px"),
+                dataTableOutput("Table"), width = 12
+              
+            ),
+               
+                mainPanel(leafletOutput("mapa", height = 600,width = 1490)))
+            
+        ),
+        tabPanel(
+            "Agua Cruda",
+            ),
+        tabPanel(
+            "Agua Residual"
+           
+        ),
+        tabPanel(
+            "Agua Potable",
+            
+        ),
+        tabPanel(
+            "Lixiviados",
+            
+        ),
+        tabPanel(
+            "Suelo",
+            titlePanel("Datos Historicos de los Monitoreos de Suelo"),
+            fluidRow(column(selectInput("c_s","Selecciona la Central",choices = c("paute_sopladora","paute_mazar","paute_molino"),selected="paute_sopladora"),width = 4),
+            column(uiOutput("tabla_s1"),width = 4),
+            column(selectInput("f_s","Selecciona la fecha",choices = c(Suelohist$fecha),selected="2018"), width = 4),
+            column(plotOutput("barras_s"),width = 8),
+            column(
+              dataTableOutput("tabla_s"),width = 12)
+            
+            )
+        ),
+        tabPanel(
+          "Descargar Reporte",sidebarPanel(
+            selectInput("Reporte", "Elige la central:", 
+                        choices = c(Suelohist$medición)),
+            radioButtons("filetype", "Tipo de archivo",
+                         choices = c("doc", "pdf")),
+          downloadButton("report", "Generate report")
+        )
+    )
+    ))
+
+
+server<-function(input, output){
+  s_s1<-reactive({
+    s_s1<-Suelohist %>% dplyr::filter(grepl(input$c_s, Suelohist$central))
+  })  
+  
+  #Mapa  
+  output$mapa <- renderLeaflet({
+      leaflet() %>% addProviderTiles(providers$Esri.WorldImagery)%>%
+        addCircleMarkers(data=Grupos$Agua, lat = ~Grupos$Agua$Lat, lng=Grupos$Agua$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Tipo, group = "Agua" ) %>%
+        addCircleMarkers(data=Grupos$Suelo, lat = ~Grupos$Suelo$Lat, lng=Grupos$Suelo$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Tipo, group = "Suelo" )%>%
+        addCircleMarkers(data=Grupos$Domestica, lat = ~Grupos$Domestica$Lat, lng=Grupos$Domestica$Long, color=~pal(Tipo), fillOpacity=0.5, label = ~Tipo, popup = ~Grupos$Domestica$Lat, group = "Domestica" )%>% 
+        addLegend(data=mydata,"bottomright", pal=pal, values=mydata$Tipo, title = "Leyenda", opacity=0.5,group = "Leyenda")%>% 
+        addLayersControl( overlayGroups = c("Agua","Suelo","Domestica","Leyenda"), options=layersControlOptions(collapsed = F,labels="Layers",title = "Layers",color="blue"))%>%
+        addGraticule(interval = 20,
+                     sphere = FALSE,
+                     style = list(color = "#333", weight = 1),
+                     layerId = NULL,
+                     group = NULL,
+                     options = pathOptions(pointerEvents = "none", clickable = FALSE))%>%
+        addScaleBar()%>% 
+        addMeasurePathToolbar(options = measurePathOptions(imperial = T,
+                                                           minPixelDistance = 100,
+                                                           showDistances = F))%>%
+        addDrawToolbar(editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))
+        
+ })
+    #Tabla del Mapa
+    output$Table<-renderDataTable({
+      
+      datatable(mydata,options=list(lengthMenu=c(4,8,nrow(mydata)),scrollx=T,autoWidth=T))
+      
+    })
+    output$tabla_s1<-renderUI({
+      if(input$c_s == "1"){
+        
+      } else {
+       
+        selectInput("u_s","Selecciona un punto:",choices = c(s_s1$punto_de_.medicion))
+      }
+    })
+    #Tabla de suelo
+    output$tabla_s=renderDataTable({
+      s_s=Suelohist %>% dplyr::filter(grepl(input$c_s, Suelohist$central) & grepl(input$u_s, Suelohist$punto_de_.medicion) & grepl(input$f_s, Suelohist$fecha))
+        datatable(s_s,options =list(lengthMenu=c(5,10,15),pageLength=10,autoWidth=T,scrollX = TRUE))
+    })
+    #Grafico de suelo
+    output$barras_s= renderPlotly({
+      s_s=Suelohist %>% dplyr::filter(grepl(input$c_s, Suelohist$central) & grepl(input$a_s, Suelohist$fecha) & grepl("trimestral", Suelohist$fFrecuencia))
+      #count_s<-data.frame(s_s$parámetro, s_s$medición, s_s$límite_máximo)
+      p <- ggplot(data=s_s, aes(x=parámetro))
+
+    })
+    
+    #Pestana de descarga
+    output$report <- downloadHandler(
+      # For PDF output, change this to "report.pdf"
+      filename = function() {
+        paste("Reporte de Muestreos",Sys.Date(),input$ext,sep = ".")
+      },
+        # Copy the report file to a temporary directory before processing it, in
+        # case we don't have write permissions to the current working dir (which
+        # can happen when deployed).
+      content = function(file){    
+        if(input$ext=="pdf")
+          pdf(file)
+        else
+          Doctype(file)
+          
+      tempReport <- file.path(tempdir(), "report.Rmd")
+        file.copy("report.Rmd", tempReport, overwrite = TRUE)
+        
+        # Set up parameters to pass to Rmd document
+        params <- list(n = input$slider)
+        
+        # Knit the document, passing in the `params` list, and eval it in a
+        # child of the global environment (this isolates the code in the document
+        # from the code in this app).
+        rmarkdown::render(tempReport, output_file = file,
+                          params = params,
+                          envir = new.env(parent = globalenv())
+        )
+      }
+    )
+}
+shinyApp(ui = ui, server = server)
+ 
+#hay que hacer un filtrado por central, punto y fecha
+

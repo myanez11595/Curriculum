@@ -1,0 +1,45 @@
+Parámetro,Unidad ,Límite_mínimo,Límite_máximo
+Aceites y grasas,mg/l,0,30
+Alkil mercurio , mg/l ,0,No detectable 
+Aluminio, mg/l ,0,5
+Arsénico total , mg/l ,0,0.1
+Bario , mg/l ,0,2
+Boro total , mg/l ,0,2
+Cadmino, mg/l ,0,0.02
+Cianuro total , mg/l ,0,0.1
+Zinc, mg/l ,0,5
+Cloro residual, mg/l ,0,0.5
+Cloroformo , mg/l ,0,0.1
+Cloruros, mg/l ,0,1000
+Cobre , mg/l ,0,1
+Cobalto, mg/l ,0,0.5
+Coliformes fecales,nmp/100 ml,0,2000
+Color real,u. pt-co,0,0.05
+Compuestos fenólicos ,mg/l ,0,0.2
+Cromo hexavalente,mg/l ,0,0.5
+DBO5,mg/l ,0,100
+DQO,mg/l ,0,200
+Estaño ,mg/l ,0,5
+Fluoruros ,mg/l ,0,5
+Fósforo,mg/l ,0,10
+Hierro,mg/l,0,10
+Hidrocarburos totales de petróleo,mg/l ,0,20
+Manganeso,mg/l ,0,2
+Materia flotante visibles ausencia ,,0,Ausencia
+Mercurio ,mg/l ,0,0.005
+Níquel,mg/l ,0,2
+Nitrógeno amoniacal ,mg/l ,0,30
+Nitrógeno total kjeldahl,mg/l ,0,50
+Compuestos organoclorados ,mg/l ,0,0.05
+Compuestos organofosforados ,mg/l ,0,0.1
+Plata ,mg/l ,0,0.1
+Plomo,mg/l ,0,0.2
+pH,unid ph,6,9
+Selenio ,mg/l ,0,0.1
+Sólidos suspendidos totales ,mg/l ,0,130
+Sólidos totales gravimétricos,mg/l ,0,1600
+Sulfatos ,mg/l ,0,1000
+Sulfuros,mg/l ,0,0.5
+Temperatura,ºC,3,20
+Tensoactivos ,mg/l ,0,0.5
+Tetracloruro de carbono ,mg/l ,0,1

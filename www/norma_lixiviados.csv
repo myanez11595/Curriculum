@@ -1,0 +1,84 @@
+Norma_tabla,Parámetro,Unidad ,Límite_mínimo,Límite_máximo
+Acuerdo_ministerial 97a_tabla 8 ,Aceites y grasas,mg/L,0,70
+Acuerdo_ministerial 97a_tabla 8 ,Explosivos o inflamantes,mg/L,0,0
+Acuerdo_ministerial 97a_tabla 8 ,Alkil mercurio,mg/L,0,No detectable
+Acuerdo_ministerial 97a_tabla 8 ,Aluminio,mg/L,0,5
+Acuerdo_ministerial 97a_tabla 8 ,Arsénico total,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 8 ,Cadmio,mg/L,0,0.02
+Acuerdo_ministerial 97a_tabla 8 ,Cianuro total,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 8 ,Zinc,mg/L,0,10
+Acuerdo_ministerial 97a_tabla 8 ,Cloro activo,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,Cloroformo,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 8 ,Cobalto total,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,Cobre,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 8 ,Compuestos fenolicos,mg/L,0,0.2
+Acuerdo_ministerial 97a_tabla 8 ,Compuestos organoclorados,mg/L,0,0.05
+Acuerdo_ministerial 97a_tabla 8 ,Cromo hexavalente,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,DBO5,mg/L,0,250
+Acuerdo_ministerial 97a_tabla 8 ,DQO,mg/L,0,500
+Acuerdo_ministerial 97a_tabla 8 ,Dicloroetileno,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 8 ,Fósforo,mg/L,0,15
+Acuerdo_ministerial 97a_tabla 8 ,Hidrocarburos totales de petróleo,mg/L,0,20
+Acuerdo_ministerial 97a_tabla 8 ,Hierro,mg/L,0,25
+Acuerdo_ministerial 97a_tabla 8 ,Manganeso,mg/L,0,10
+Acuerdo_ministerial 97a_tabla 8 ,Mercurio,mg/L,0,0.01
+Acuerdo_ministerial 97a_tabla 8 ,Níquel,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 8 ,Nitrógeno total kjeldahl,mg/L,0,60
+Acuerdo_ministerial 97a_tabla 8 ,Organofosforados,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 8 ,Plata,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,Plomo,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,pH,unid ph,6,9
+Acuerdo_ministerial 97a_tabla 8 ,Selenio,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 8 ,Solidos sedimentables,mg/L,0,20
+Acuerdo_ministerial 97a_tabla 8 ,Sólidos suspendidos totales ,mg/L,0,220
+Acuerdo_ministerial 97a_tabla 8 ,Sólidos totales,mg/L,0,1600
+Acuerdo_ministerial 97a_tabla 8 ,Sulfatos,mg/L,0,400
+Acuerdo_ministerial 97a_tabla 8 ,Sulfuro,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 8 ,Temperatura,°C,0,40
+Acuerdo_ministerial 97a_tabla 8 ,Tensoactivos,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 8 ,Tetracloruro de carbono,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 8 ,Tricloroetileno,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 9,Aceites y grasas,mg/L,0,30
+Acuerdo_ministerial 97a_tabla 9,Alkil mercurio ,mg/L,0,No detectable 
+Acuerdo_ministerial 97a_tabla 9,Aluminio,mg/L,0,5
+Acuerdo_ministerial 97a_tabla 9,Arsénico total ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Bario ,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 9,Boro total ,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 9,Cadmino,mg/L,0,0.02
+Acuerdo_ministerial 97a_tabla 9,Cianuro total ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Zinc,mg/L,0,5
+Acuerdo_ministerial 97a_tabla 9,Cloro activo ,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 9,Cloroformo ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Cloruros ,mg/L,0,1000
+Acuerdo_ministerial 97a_tabla 9,Cobre ,mg/L,0,1
+Acuerdo_ministerial 97a_tabla 9,Cobalto,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 9,Coliformes fecales ,nmp/100 ml,0,2000
+Acuerdo_ministerial 97a_tabla 9,Color real,u. pt-co,0,0.05
+Acuerdo_ministerial 97a_tabla 9,Compuestos fenólicos ,mg/L,0,0.2
+Acuerdo_ministerial 97a_tabla 9,Cromo hexavalente,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 9,DBO5,mg/L,0,100
+Acuerdo_ministerial 97a_tabla 9,DQO,mg/L,0,200
+Acuerdo_ministerial 97a_tabla 9,Estaño ,mg/L,0,5
+Acuerdo_ministerial 97a_tabla 9,Fluoruros ,mg/L,0,5
+Acuerdo_ministerial 97a_tabla 9,Fósforo,mg/L,0,10
+Acuerdo_ministerial 97a_tabla 9,Hierro,mg/L,0,10
+Acuerdo_ministerial 97a_tabla 9,Hidrocarburos totales de petróleo ,mg/L,0,20
+Acuerdo_ministerial 97a_tabla 9,Manganeso,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 9,Materia flotante visibles ausencia ,,0,Ausencia
+Acuerdo_ministerial 97a_tabla 9,Mercurio total ,mg/L,0,0.005
+Acuerdo_ministerial 97a_tabla 9,Níquel,mg/L,0,2
+Acuerdo_ministerial 97a_tabla 9,Amonio expresado como nitrógeno,mg/L,0,30
+Acuerdo_ministerial 97a_tabla 9,Nitrógeno total kjeldahl,mg/L,0,50
+Acuerdo_ministerial 97a_tabla 9,Compuestos organoclorados ,mg/L,0,0.05
+Acuerdo_ministerial 97a_tabla 9,Compuestos organofosforados ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Plata ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Plomo,mg/L,0,0.2
+Acuerdo_ministerial 97a_tabla 9,pH,unid ph,6,9
+Acuerdo_ministerial 97a_tabla 9,Selenio ,mg/L,0,0.1
+Acuerdo_ministerial 97a_tabla 9,Sólidos suspendidos totales ,mg/L,0,130
+Acuerdo_ministerial 97a_tabla 9,Sólidos totales ,mg/L,0,1600
+Acuerdo_ministerial 97a_tabla 9,Sulfatos ,mg/L,0,1000
+Acuerdo_ministerial 97a_tabla 9,Sulfuro,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 9,Temperatura,ºC,3,20
+Acuerdo_ministerial 97a_tabla 9,Tensoactivos ,mg/L,0,0.5
+Acuerdo_ministerial 97a_tabla 9,Tetracloruro de carbono ,mg/L,0,1
